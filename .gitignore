@@ -1,0 +1,12 @@
+*.env
+.vscode
+.DS_store
+.ipynb_checkpoints
+*.bkp
+dbt/profiles.yml
+prefect/volumes
+__pycache__
+logs
+*.session
+/dbt_packages
+bq-credentials.json
