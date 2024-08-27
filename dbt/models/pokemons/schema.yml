@@ -1,0 +1,6 @@
+version: 2
+
+sources:
+  - name: pokemons
+    tables:
+      - name: stg_pokemons
