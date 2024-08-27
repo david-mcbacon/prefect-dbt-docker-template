@@ -1,0 +1,26 @@
+# Documentation: https://docs.getdbt.com/reference/profiles.yml
+config:
+  send_anonymous_usage_stats: false
+  use_colors: true
+
+app:
+  target: dev # dev or prod
+  outputs:
+
+    dev:
+      type: bigquery
+      method: service-account
+      project: your-project-id
+      dataset: dev
+      location: your-location
+      keyfile: ./bq-credentials.json
+      threads: 2
+
+    prod:
+      type: bigquery
+      method: service-account
+      project: your-project-id
+      dataset: prod
+      location: your-location
+      keyfile: ./bq-credentials.json
+      threads: 2
