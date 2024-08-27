@@ -1,6 +1,22 @@
 include .env
 export
 
+IMAGE_NAME := prefect-orion
+IMAGE_TAG := 2.11.3
+IMAGE := ${IMAGE_NAME}:${IMAGE_TAG}
+IMAGE_HASH := $(shell command docker images -q ${IMAGE} 2> /dev/null)
+
+.PHONY: docker_image_cond
+docker_image_cond:
+ifeq ($(IMAGE_HASH),)
+docker_image_cond: docker
+endif
+
+.PHONY: docker
+docker:
+	@echo "building docker image ...";
+	docker build --no-cache -f prefect-dockerized/Dockerfile -t ${IMAGE} .
+
 ##### Deploy #####
 
 .PHONY: deploy-local

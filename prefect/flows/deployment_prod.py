@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 env_path = Path(__file__).resolve().parents[2] / ".env"
 load_dotenv(env_path)
 
-print(f"Connecting to minio storage on: {os.environ.get('MINIO_ENDPOINT_URL')}")
+print(f"Connecting to minio storage on URL: {os.environ.get('MINIO_ENDPOINT_URL')}")
 
 ###############################
 #####    CONFIG PROD      #####
@@ -53,6 +53,17 @@ worker_infrastructure = DockerContainer(
 #             DEPLOYED FLOWS            #
 #########################################
 
+from src.pokemon.pokemon_elt import run_pokemon_elt
+
+pokemon_elt_dep = Deployment.build_from_flow(
+    name="Pokemon ELT",
+    flow=run_pokemon_elt,
+    storage=minio_block.load("minio"),
+    infrastructure=worker_infrastructure,
+    work_queue_name="default",
+    tags=["pokemon", "elt"],
+    apply=True,
+)
 
 # at the end of the file
 print("✅ Deployed successfully")
