@@ -127,7 +127,7 @@ services:
     entrypoint: /bin/bash 
     command: "-c 'cd /dbt && dbt docs generate && sleep 2 && dbt docs serve --port 8081'"
     networks:
-      - data-tools
+      - prefect-dbt
 
 
 
