@@ -30,8 +30,8 @@ The project is designed for local development and single-server deployment but c
 1. **Clone this repository:**
 
    ```bash
-   git clone <repository-url>
-   cd <repository-folder>
+   git clone https://github.com/david-mcbacon/prefect-dbt-docker-template.git
+   cd prefect-dbt-docker-template
    ```
 
 2. **Create a new Google Cloud Platform project.**
@@ -49,7 +49,7 @@ The project is designed for local development and single-server deployment but c
 
 7. **Configure DBT:**
 
-   - Create `profiles.yaml` in the `dbt` folder using [`profiles.example.yaml`](./dbt/profiles.example.yaml) as a template.
+   - Create `profiles.yaml` in the `dbt` folder using [`profiles.example.yml`](./dbt/profiles.example.yml) as a template.
 
 8. **Set up the Conda environment and install dependencies:**
 
@@ -140,7 +140,7 @@ The project is designed for local development and single-server deployment but c
 
 ## DBT Development and Production Configuration
 
-DBT uses the `profiles.yaml` file for database connection configuration. Create this file in the `dbt` folder, using [`profiles.example.yaml`](./dbt/profiles.example.yaml) as a template. The template includes both `dev` and `prod` configurations. The default target is `dev`, but you can switch to `prod` by changing the `target` parameter in `profiles.yaml` or directly in the DBT command.
+DBT uses the `profiles.yaml` file for database connection configuration. Create this file in the `dbt` folder, using [`profiles.example.yml`](./dbt/profiles.example.yml) as a template. The template includes both `dev` and `prod` configurations. The default target is `dev`, but you can switch to `prod` by changing the `target` parameter in `profiles.yaml` or directly in the DBT command.
 
 To run the production configuration:
 
